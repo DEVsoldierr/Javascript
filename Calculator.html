@@ -3,6 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <style>
+        body {
+        align-items:center;
+        justify-content: center;
+        font-family: Arial;
+        background-color: rgb(0, 0, 0);
+      }
+
+        button {
+        min-width: 60px;  /* Ensures a minimum size */
+        min-height: 60px;
+        padding: 10px;  /* Provides spacing */
+        border-radius: 50%;
+        border-radius: 60px;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+        margin-right: 5px;
+        text-align: center;
+        overflow: hidden;
+        padding: 10px;
+      }
+
+      .orange-button{
+          background-color: rgb(254, 160, 10);
+          color: white;
+      }
+    </style>
 </head>
 <body>
 
@@ -21,7 +49,7 @@
         cal+='3';
          console.log(`cal= ${cal}`);
     ">3</button>
-    <button onclick="
+    <button class="orange-button" onclick="
     try{
         operators('+');
         }
@@ -44,7 +72,7 @@
         cal+='6';
          console.log(`cal= ${cal}`);
     ">6</button>
-    <button onclick="
+    <button class="calculator-button orange-button" onclick="
         operators('-');
     ">-</button>
 </p>
@@ -61,7 +89,7 @@
         cal+='9';
          console.log(`cal= ${cal}`);
     ">9</button>
-    <button onclick="
+    <button class="calculator-button orange-button" onclick="
         operators('*');
     ">*</button>
 </p>
@@ -74,10 +102,10 @@
         cal+='.';
          console.log(`cal= ${cal}`);
     ">.</button>
-    <button onclick="
+    <button class="calculator-button orange-button" onclick="
         operators('/');
     ">/</button>
-    <button onclick="
+    <button class="calculator-button orange-button" onclick="
     try {
         if(cal.trim() === '') throw new Error('No input provided');
         cal = eval(cal).toString();  // Convert result back to string for further calculations
@@ -108,6 +136,11 @@
         }
         console.log(`cal= ${cal}`);
     }
+    function displayCalculation() {
+        document.querySelector('.js-calculation')
+          .innerHTML = calculation;
+      }
+
 </script>
 </body>
 </html>
