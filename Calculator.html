@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <H2>calculator</H2>
+
+<p>
+    <button onclick="
+        cal+='1';
+        console.log(`cal= ${cal}`);
+    ">1</button>
+    <button onclick="
+        cal+='2';
+         console.log(`cal= ${cal}`);
+    ">2</button>
+    <button onclick="
+        cal+='3';
+         console.log(`cal= ${cal}`);
+    ">3</button>
+    <button onclick="
+    try{
+        operators('+');
+        }
+    catch(error)
+    {
+       console.log(`error.message= ${error.message}`);
+    }
+    ">+</button>
+</p>
+<p>
+    <button onclick="
+        cal+='4';
+        console.log(`cal= ${cal}`);
+    ">4</button>
+    <button onclick="
+        cal+='5';
+         console.log(`cal= ${cal}`);
+    ">5</button>
+    <button onclick="
+        cal+='6';
+         console.log(`cal= ${cal}`);
+    ">6</button>
+    <button onclick="
+        operators('-');
+    ">-</button>
+</p>
+<p>
+    <button onclick="
+        cal+='7';
+        console.log(`cal= ${cal}`);
+    ">7</button>
+    <button onclick="
+        cal+='8';
+         console.log(`cal= ${cal}`);
+    ">8</button>
+    <button onclick="
+        cal+='9';
+         console.log(`cal= ${cal}`);
+    ">9</button>
+    <button onclick="
+        operators('*');
+    ">*</button>
+</p>
+<p>
+    <button onclick="
+        cal+='0';
+        console.log(`cal= ${cal}`);
+    ">0</button>
+    <button onclick="
+        cal+='.';
+         console.log(`cal= ${cal}`);
+    ">.</button>
+    <button onclick="
+        operators('/');
+    ">/</button>
+    <button onclick="
+    try {
+        if(cal.trim() === '') throw new Error('No input provided');
+        cal = eval(cal).toString();  // Convert result back to string for further calculations
+        console.log(`cal= ${cal}`);
+    } catch(error) {
+        console.log('Error:', error.message);
+        cal = '';  // Reset on invalid input
+    }
+    ">=</button>
+</p>
+<p>
+    <button onclick="
+        cal='';
+        console.log(`cal= ${cal}`);
+
+    ">clear</button>
+</p>
+
+<script>
+    let cal= '';
+    function operators(op) {
+    cal=cal.trim();
+        if(cal.length>0 && ['+','-','/','*'].includes(cal.slice(-1))){
+          cal=cal.slice(0,-1) + op + ' ';
+        }
+        else{
+            cal+=` ${op} `;
+        }
+        console.log(`cal= ${cal}`);
+    }
+</script>
+</body>
+</html>
