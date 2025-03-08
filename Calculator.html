@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title>Calculator</title>
     <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
         body {
         align-items:center;
         justify-content: center;
@@ -30,24 +37,34 @@
           background-color: rgb(254, 160, 10);
           color: white;
       }
+        .display{
+            width: 250px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <H2>calculator</H2>
+
+<div class="container">
+    <div class="display">
+        <p class="js-calculation" style="margin: 0; color: black;">0</p>
+    </div>
 
 <p>
     <button onclick="
-        cal+='1';
-        console.log(`cal= ${cal}`);
+         updateNum('1');
     ">1</button>
     <button onclick="
-        cal+='2';
-         console.log(`cal= ${cal}`);
+        updateNum('2');
     ">2</button>
     <button onclick="
-        cal+='3';
-         console.log(`cal= ${cal}`);
+       updateNum('3');
     ">3</button>
     <button class="orange-button" onclick="
     try{
@@ -61,16 +78,13 @@
 </p>
 <p>
     <button onclick="
-        cal+='4';
-        console.log(`cal= ${cal}`);
+        updateNum('4');
     ">4</button>
     <button onclick="
-        cal+='5';
-         console.log(`cal= ${cal}`);
+       updateNum('5');
     ">5</button>
     <button onclick="
-        cal+='6';
-         console.log(`cal= ${cal}`);
+        updateNum('6');
     ">6</button>
     <button class="calculator-button orange-button" onclick="
         operators('-');
@@ -78,16 +92,13 @@
 </p>
 <p>
     <button onclick="
-        cal+='7';
-        console.log(`cal= ${cal}`);
+        updateNum('7');
     ">7</button>
     <button onclick="
-        cal+='8';
-         console.log(`cal= ${cal}`);
+        updateNum('8');
     ">8</button>
     <button onclick="
-        cal+='9';
-         console.log(`cal= ${cal}`);
+        updateNum('9');
     ">9</button>
     <button class="calculator-button orange-button" onclick="
         operators('*');
@@ -110,6 +121,7 @@
         if(cal.trim() === '') throw new Error('No input provided');
         cal = eval(cal).toString();  // Convert result back to string for further calculations
         console.log(`cal= ${cal}`);
+        displayCalculation();
     } catch(error) {
         console.log('Error:', error.message);
         cal = '';  // Reset on invalid input
@@ -120,9 +132,11 @@
     <button onclick="
         cal='';
         console.log(`cal= ${cal}`);
+        displayCalculation();
 
     ">clear</button>
 </p>
+</div>
 
 <script>
     let cal= '';
@@ -135,10 +149,16 @@
             cal+=` ${op} `;
         }
         console.log(`cal= ${cal}`);
+        displayCalculation();
+    }
+    function updateNum(num){
+        cal+=`${num}`;
+        console.log(`cal: ${cal}`);
+        displayCalculation();
+
     }
     function displayCalculation() {
-        document.querySelector('.js-calculation')
-          .innerHTML = calculation;
+        document.querySelector('.js-calculation').innerHTML= cal || '0';
       }
 
 </script>
